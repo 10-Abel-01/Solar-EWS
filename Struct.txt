@@ -1,0 +1,26 @@
+## Structure di react
+src/
+├── dashboard/
+│   └── src/
+│       ├── components/
+│       │   ├── common/
+│       │   ├── layout/
+│       │   └── MainLayout.jsx
+│       ├── hooks/
+│       ├── pages/
+│       │   └── Dashboard.jsx
+│       └── store/
+├── assets/
+├── App.css
+├── App.jsx
+├── index.css
+└── main.jsx
+
+## Structure di root
+ews/
+├── backend/
+│   ├── main.py
+│   ├── db.py
+│   ├── models.py
+│   └── serial_bridge.py
+└── arduino/
