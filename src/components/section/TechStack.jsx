@@ -7,7 +7,10 @@ import pnpmLogo from "../../assets/pnpm.png";
 import githubLogo from "../../assets/github.png";
 import pythonLogo from "../../assets/python.png";
 import jsLogo from "../../assets/js.png";
-import bootstrapLogo from "../../assets/bootstrap.png";
+import cppLogo from "../../assets/cpp.png";
+import websocketLogo from "../../assets/websocket.png";
+import arduinoLogo from "../../assets/arduino.png";
+import fastapiLogo from "../../assets/fastapi.png";
 
 const TechStack = () => {
   const logos = [
@@ -17,7 +20,10 @@ const TechStack = () => {
     tailwindLogo,
     githubLogo,
     pythonLogo,
-    bootstrapLogo,
+    cppLogo,
+    websocketLogo,
+    arduinoLogo,
+    fastapiLogo,
     jsLogo,
     nodeLogo,
   ];

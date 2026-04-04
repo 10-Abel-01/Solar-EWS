@@ -32,16 +32,16 @@ const Navbar = () => {
           About
         </button>
         <button
-          onClick={() => scrollToSection("summary")}
-          className="text-[10px] md:text-sm border border-black px-4 py-2 rounded-full hover:bg-blue-500/10 transition-all"
-        >
-          Summary
-        </button>
-        <button
           onClick={() => scrollToSection("flow")}
           className="text-[10px] md:text-sm border border-black px-4 py-2 rounded-full hover:bg-blue-500/10 transition-all"
         >
           Flow
+        </button>
+        <button
+          onClick={() => scrollToSection("summary")}
+          className="text-[10px] md:text-sm border border-black px-4 py-2 rounded-full hover:bg-blue-500/10 transition-all"
+        >
+          Summary
         </button>
       </div>
     </nav>
