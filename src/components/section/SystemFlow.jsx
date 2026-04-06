@@ -67,7 +67,7 @@ const SystemFlow = () => {
         ))}
       </div>
 
-      <div className="mt-20 bg-emerald-950 rounded-[3rem] p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-8 shadow-2xl">
+      <div className="mt-20 bg-orange-950 rounded-[3rem] p-8 md:p-12 text-white flex flex-col md:flex-row items-center gap-8 shadow-2xl">
         <div className="flex-1">
           <h4 className="text-2xl font-bold mb-4">Integrasi Hardware-ke-Web</h4>
           <p className="text-emerald-100/70 leading-relaxed">
@@ -76,11 +76,11 @@ const SystemFlow = () => {
         </div>
         <div className="flex gap-4">
            <div className="px-6 py-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
-              <span className="block text-2xl font-black text-emerald-400">99%</span>
+              <span className="block text-2xl font-black text-orange-400">99%</span>
               <span className="text-[10px] uppercase tracking-wider opacity-60">Uptime Data</span>
            </div>
            <div className="px-6 py-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
-              <span className="block text-2xl font-black text-emerald-400">&lt; 1s</span>
+              <span className="block text-2xl font-black text-orange-400">&lt; 1s</span>
               <span className="text-[10px] uppercase tracking-wider opacity-60">Latency</span>
            </div>
         </div>

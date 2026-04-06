@@ -24,7 +24,7 @@ const Hero = () => {
       <p className="text-gray-500 max-w-2xl mx-auto text-base md:text-lg leading-relaxed font-normal">
         Sistem monitoring IoT presisi tinggi untuk optimalisasi daya harian
         melalui manajemen
-        <span className="text-emerald-600 font-bold">
+        <span className="text-orange-600 font-bold">
           {" "}
           3 sesi baterai{" "}
         </span>{" "}
