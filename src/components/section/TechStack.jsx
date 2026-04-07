@@ -29,8 +29,7 @@ const TechStack = () => {
   ];
 
   return (
-    <section id="tech" className="py-12 bg-white overflow-hidden shadow-white border-y border-white/5">
-      {/* <h1 className="animate-pulse text-center py-4 font-bold text-[2rem]">TECH STACK</h1> */}
+    <section id="tech" className="py-12 overflow-hidden shadow-white border-y border-white/5">
       <div className="flex animate-marquee whitespace-nowrap">
         <div className="flex gap-24 items-center px-12">
           {logos.map((logo, index) => (
