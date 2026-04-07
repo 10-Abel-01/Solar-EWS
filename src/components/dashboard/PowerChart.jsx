@@ -7,13 +7,16 @@ import { Activity, Zap } from 'lucide-react';
 
 // dummy data untuk chart
 const data = [
-  { time: '09:00', actual: 40, forecast: 42 },
-  { time: '10:00', actual: 55, forecast: 58 },
-  { time: '11:00', actual: 85, forecast: 80 },
-  { time: '12:00', actual: 95, forecast: 92 },
-  { time: '13:00', actual: 80, forecast: 85 },
-  { time: '14:00', actual: 65, forecast: 70 },
-  { time: '15:00', actual: 45, forecast: 50 },
+  { time: '07:00', actual: 40, forecast: 42 },
+  { time: '08:00', actual: 55, forecast: 58 },
+  { time: '09:00', actual: 85, forecast: 80 },
+  { time: '10:00', actual: 95, forecast: 92 },
+  { time: '11:00', actual: 80, forecast: 85 },
+  { time: '12:00', actual: 90, forecast: 70 },
+  { time: '13:00', actual: 70, forecast: 69 },
+  { time: '14:00', actual: 54, forecast: 51 },
+  { time: '15:00', actual: 41, forecast: 45 },
+  { time: '16:00', actual: 39, forecast: 33 },
 ];
 
 const PowerChart = () => {
@@ -30,7 +33,7 @@ const PowerChart = () => {
       <div className="flex justify-between items-start md:items-center mb-6">
         <div>
           <h3 className="text-lg md:text-xl font-black text-gray-950 flex items-center gap-2">
-            <Activity size={22} className="text-emerald-500" /> 
+            <Activity size={22} className="text-orange-500" /> 
             Real-time Power Absorption
           </h3>
           <p className="text-gray-400 text-[10px] md:text-xs font-medium mt-1">
@@ -38,9 +41,9 @@ const PowerChart = () => {
           </p>
         </div>
         <div className="hidden sm:flex gap-2">
-           <div className="flex items-center gap-2 px-3 py-1 bg-emerald-50 rounded-lg">
-              <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-              <span className="text-[10px] font-black text-emerald-700 uppercase tracking-tighter">Live Sensor</span>
+           <div className="flex items-center gap-2 px-3 py-1 bg-orange-50 rounded-lg">
+              <div className="w-2 h-2 bg-orange-500 rounded-full animate-pulse" />
+              <span className="text-[10px] font-black text-orange-700 uppercase tracking-tighter">Live Sensor</span>
            </div>
         </div>
       </div>
@@ -50,8 +53,8 @@ const PowerChart = () => {
           <AreaChart data={data} margin={{ top: 10, right: 10, left: -25, bottom: 0 }}>
             <defs>
               <linearGradient id="colorActual" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="5%" stopColor="#10b981" stopOpacity={0.3}/>
-                <stop offset="95%" stopColor="#10b981" stopOpacity={0}/>
+                <stop offset="5%" stopColor="#b97210" stopOpacity={0.3}/>
+                <stop offset="95%" stopColor="#b97210" stopOpacity={0}/>
               </linearGradient>
               <linearGradient id="colorForecast" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#6366f1" stopOpacity={0.1}/>
@@ -59,7 +62,6 @@ const PowerChart = () => {
               </linearGradient>
             </defs>
             
-            {/* Legend yang adaptif: Di mobile pindah ke tengah agar tidak jadi 1 kolom gepeng */}
             <Legend 
               verticalAlign="top" 
               align={isMobile ? "center" : "right"} 
@@ -104,7 +106,7 @@ const PowerChart = () => {
               type="monotone" 
               dataKey="actual" 
               name="Actual Power (W)"
-              stroke="#10b981" 
+              stroke="#b91010" 
               strokeWidth={isMobile ? 3 : 4}
               fillOpacity={1} 
               fill="url(#colorActual)" 

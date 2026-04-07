@@ -1,16 +1,8 @@
 import { 
+  Settings,
   LayoutDashboard, 
   BookOpen, 
-  Calculator, 
-  CheckSquare, 
-  Library,
-  Database,
-  Truck,
-  ShoppingCart,
-  History,
-  Settings,
-  UserCog,
-  FileText
+  Calculator 
 } from "lucide-react";
 
 export const MENU_ITEMS = [
@@ -25,6 +17,12 @@ export const MENU_ITEMS = [
     items: [
       { name: "Analisa", path: "/analytics", icon: BookOpen },
       { name: "Diagnostik", path: "/diagnostics", icon: Calculator },
+    ]
+  },
+  {
+    group: "MAIN MENU",
+    items: [
+      { name: "Landing Page", path: "/", icon: Settings },
     ]
   },
 ];

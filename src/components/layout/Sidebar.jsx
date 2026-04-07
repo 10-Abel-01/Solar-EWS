@@ -14,6 +14,8 @@ const Sidebar = ({ isCollapsed, setIsCollapsed }) => {
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const location = useLocation();
 
+  const isActive = (path) => location.pathname === path;
+
   const getActiveVariant = () => {
     if (window.innerWidth < 1024) {
       return isMobileOpen ? "open" : "closed";
