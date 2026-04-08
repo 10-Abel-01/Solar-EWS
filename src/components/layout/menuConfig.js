@@ -15,8 +15,8 @@ export const MENU_ITEMS = [
   {
     group: "KONTROL",
     items: [
-      { name: "Analisa", path: "/analytics", icon: BookOpen },
-      { name: "Diagnostik", path: "/diagnostics", icon: Calculator },
+      { name: "Analytics", path: "/analytics", icon: BookOpen },
+      { name: "Diagnostics", path: "/diagnostics", icon: Calculator },
     ]
   },
   {
