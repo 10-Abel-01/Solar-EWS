@@ -60,7 +60,7 @@ const Footer = () => {
       </div>
       &copy; 2026 Kelompok 1. All rights reserved. Build with
       <svg
-        className="w-5 h-5 inline-block ml-1 text-red-500"
+        className="w-5 h-5 inline-block ml-1 text-gray-500"
         fill="currentColor"
         viewBox="0 0 24 24"
       >

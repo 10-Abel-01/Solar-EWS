@@ -1,10 +1,12 @@
-## Structure di react
+## Struct di react
 src/
 ├── dashboard/
 │   └── src/
 │       ├── components/
 │       │   ├── common/
 │       │   ├── layout/
+│       │   ├── dashboard/
+│       │       ├── dashboard/
 │       │   └── MainLayout.jsx
 │       ├── hooks/
 │       ├── pages/
@@ -16,7 +18,7 @@ src/
 ├── index.css
 └── main.jsx
 
-## Structure di root
+## Struct di root
 ews/
 ├── backend/
 │   ├── main.py
