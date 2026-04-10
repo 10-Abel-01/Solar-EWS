@@ -75,9 +75,7 @@ const Schedule = () => {
                 <h3 className="text-2xl font-black text-gray-950">
                   {item.session}
                 </h3>
-                <p className="text-gray-600 font-bold font-mono">
-                  {item.time}
-                </p>
+                <p className="text-gray-600 font-bold font-mono">{item.time}</p>
               </div>
 
               <div className="space-y-4">

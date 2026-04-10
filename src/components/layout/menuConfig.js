@@ -1,8 +1,7 @@
-import { 
-  Settings,
-  LayoutDashboard, 
-  BookOpen, 
-  Calculator 
+import {
+  LayoutDashboard,
+  BookOpen,
+  Calculator
 } from "lucide-react";
 import { FaBook } from "react-icons/fa";
 import { MdArrowBack } from "react-icons/md";

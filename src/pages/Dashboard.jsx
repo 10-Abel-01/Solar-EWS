@@ -13,7 +13,7 @@ const Dashboard = () => {
     <div className="flex min-h-screen bg-gray-100">
       <main
         className={`flex-1 transition-all duration-300 
-          ${isCollapsed ? "lg:ml-20" : "lg:ml-64"} 
+          ${isCollapsed ? "lg:ml-20" : "lg:ml-64"}
           lg:mt-0`}
       >
         <div className="flex flex-col gap-y-4">
