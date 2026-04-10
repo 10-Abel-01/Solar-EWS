@@ -108,7 +108,7 @@ const Schedule = () => {
       </div>
 
       <div className="mt-12 p-6 bg-white border border-dashed border-gray-200 rounded-3xl flex items-start gap-4">
-        <div className="p-2 bg-emerald-50 text-emerald-600 rounded-lg">
+        <div className="p-2 bg-gray-50 text-gray-600 rounded-lg">
           <Clock size={20} />
         </div>
         <p className="text-sm text-gray-500 leading-relaxed">
