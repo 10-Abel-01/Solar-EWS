@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import Header from "../components/analytics/Header";
 import StatsOverview from "../components/analytics/StatsOverview";
+import WeeklyOverview from "../components/analytics/WeeklyOverview";
 
 const Analytics = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -18,6 +19,7 @@ const Analytics = () => {
             {/* sesi analytics */}
             <Header />
             <StatsOverview />
+            <WeeklyOverview />
         </div>
       </main>
     </div>
