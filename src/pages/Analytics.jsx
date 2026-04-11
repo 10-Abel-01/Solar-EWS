@@ -4,6 +4,7 @@ import { useState } from "react";
 import Header from "../components/analytics/Header";
 import StatsOverview from "../components/analytics/StatsOverview";
 import WeeklyOverview from "../components/analytics/WeeklyOverview";
+import SummaryCards from "../components/analytics/SummaryCards";
 
 const Analytics = () => {
     const [isCollapsed, setIsCollapsed] = useState(false);
@@ -18,6 +19,7 @@ const Analytics = () => {
         <div className="flex flex-col gap-y-4 space-y-8 pb-10">
             {/* sesi analytics */}
             <Header />
+            <SummaryCards />
             <StatsOverview />
             <WeeklyOverview />
         </div>
