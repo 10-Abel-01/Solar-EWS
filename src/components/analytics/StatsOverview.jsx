@@ -29,7 +29,7 @@ const StatsOverview = () => {
             <h3 className="font-black text-gray-950">Thermal Correlation</h3>
           </div>
           <div className="text-right">
-            <p className="text-[10px] font-black text-red-500 uppercase italic">Degradasi Terdeteksi</p>
+            <p className="text-[10px] font-black text-red-500 uppercase">Degradasi Terdeteksi</p>
             <p className="text-xs font-bold text-gray-400">-4.2% / +5°C</p>
           </div>
         </div>
