@@ -1,58 +1,77 @@
-import React from 'react';
-import { useTrafficAI } from '../../hooks/useTrafficAI';
-import { AlertCircle, CheckCircle2 } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
-const MLforecast = () => {
-  const { data, alerts, isHazard } = useTrafficAI();
+const VOLTAGE_MIN = 11.5;
+const VOLTAGE_MAX = 13.5;
+const TEMP_MAX = 60;
+const EFFICIENCY_MIN = 70;
 
-  return (
-    <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm transition-all duration-500">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="font-black text-gray-900 italic">AI LIVE MONITOR</h3>
-        {isHazard ? (
-          <div className="flex items-center gap-2 text-red-600 bg-red-50 px-4 py-1.5 rounded-full animate-pulse">
-            <AlertCircle size={16} />
-            <span className="text-[10px] font-black uppercase">System Danger</span>
-          </div>
-        ) : (
-          <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 px-4 py-1.5 rounded-full">
-            <CheckCircle2 size={16} />
-            <span className="text-[10px] font-black uppercase">System Safe</span>
-          </div>
-        )}
-      </div>
+function generateData() {
+  const voltage = parseFloat((Math.random() * 3 + 11).toFixed(1));
+  const temp = parseFloat((Math.random() * 40 + 25).toFixed(1));
+  const efficiency = parseFloat((Math.random() * 40 + 60).toFixed(1));
+  const timestamp = new Date().toLocaleTimeString();
+  return { voltage, temp, efficiency, timestamp };
+}
 
-      <div className="grid grid-cols-3 gap-4 mb-8">
-        <div className="text-center">
-          <p className="text-[10px] font-bold text-gray-400 uppercase">Voltage</p>
-          <p className="text-lg font-black text-gray-900">{data.voltage}V</p>
-        </div>
-        <div className="text-center border-x border-gray-50">
-          <p className="text-[10px] font-bold text-gray-400 uppercase">Temp</p>
-          <p className="text-lg font-black text-gray-900">{data.temp}°C</p>
-        </div>
-        <div className="text-center">
-          <p className="text-[10px] font-bold text-gray-400 uppercase">Efficiency</p>
-          <p className="text-lg font-black text-gray-900">{data.efficiency}%</p>
-        </div>
-      </div>
+function buildAlerts(data) {
+  const alerts = [];
 
-      <div className="space-y-3">
-        {alerts.length > 0 ? (
-          alerts.map((alert) => (
-            <div key={alert.id} className="bg-gray-50 p-4 rounded-2xl border-l-4 border-red-500 flex justify-between items-center">
-              <span className={`text-xs font-bold ${alert.color}`}>{alert.msg}</span>
-              <span className="text-[9px] text-gray-400">{data.timestamp}</span>
-            </div>
-          ))
-        ) : (
-          <div className="text-center py-4 border-2 border-dashed border-gray-50 rounded-2xl">
-            <p className="text-xs text-gray-400 font-medium italic">Scanning for anomalies...</p>
-          </div>
-        )}
-      </div>
-    </div>
-  );
-};
+  if (data.voltage < VOLTAGE_MIN) {
+    alerts.push({
+      id: 'volt-low',
+      msg: `Low voltage detected: ${data.voltage}V (min ${VOLTAGE_MIN}V)`,
+      color: 'text-red-600',
+    });
+  } else if (data.voltage > VOLTAGE_MAX) {
+    alerts.push({
+      id: 'volt-high',
+      msg: `High voltage detected: ${data.voltage}V (max ${VOLTAGE_MAX}V)`,
+      color: 'text-orange-600',
+    });
+  }
 
-export default MLforecast;
+  if (data.temp > TEMP_MAX) {
+    alerts.push({
+      id: 'temp-high',
+      msg: `Overheating: ${data.temp}°C (max ${TEMP_MAX}°C)`,
+      color: 'text-red-600',
+    });
+  }
+
+  if (data.efficiency < EFFICIENCY_MIN) {
+    alerts.push({
+      id: 'eff-low',
+      msg: `Low efficiency: ${data.efficiency}% (min ${EFFICIENCY_MIN}%)`,
+      color: 'text-yellow-600',
+    });
+  }
+
+  return alerts;
+}
+
+export function useTrafficAI() {
+  const [data, setData] = useState({
+    voltage: 12.5,
+    temp: 38.0,
+    efficiency: 85.0,
+    timestamp: new Date().toLocaleTimeString(),
+  });
+  const [alerts, setAlerts] = useState([]);
+  const [isHazard, setIsHazard] = useState(false);
+
+  useEffect(() => {
+    const tick = () => {
+      const newData = generateData();
+      const newAlerts = buildAlerts(newData);
+      setData(newData);
+      setAlerts(newAlerts);
+      setIsHazard(newAlerts.length > 0);
+    };
+
+    tick(); // run immediately on mount
+    const interval = setInterval(tick, 3000); // update every 3s
+    return () => clearInterval(interval);
+  }, []);
+
+  return { data, alerts, isHazard };
+}
