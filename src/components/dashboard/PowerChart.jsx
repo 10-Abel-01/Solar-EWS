@@ -13,16 +13,16 @@ import { Activity, Zap } from "lucide-react";
 
 // dummy data untuk chart
 const data = [
-  { time: "07:00", actual: 40, forecast: 42 },
-  { time: "08:00", actual: 55, forecast: 58 },
-  { time: "09:00", actual: 85, forecast: 80 },
-  { time: "10:00", actual: 95, forecast: 92 },
-  { time: "11:00", actual: 80, forecast: 85 },
-  { time: "12:00", actual: 90, forecast: 70 },
-  { time: "13:00", actual: 70, forecast: 69 },
-  { time: "14:00", actual: 54, forecast: 51 },
-  { time: "15:00", actual: 41, forecast: 45 },
-  { time: "16:00", actual: 39, forecast: 33 },
+  { time: "08:00", actual: 40, forecast: 42 },
+  { time: "09:00", actual: 55, forecast: 58 },
+  { time: "10:00", actual: 85, forecast: 80 },
+  { time: "11:00", actual: 95, forecast: 92 },
+  { time: "12:00", actual: 80, forecast: 85 },
+  { time: "13:00", actual: 90, forecast: 70 },
+  { time: "14:00", actual: 70, forecast: 69 },
+  { time: "15:00", actual: 54, forecast: 51 },
+  { time: "16:00", actual: 41, forecast: 45 },
+  { time: "17:00", actual: 39, forecast: 33 },
 ];
 
 const PowerChart = () => {
