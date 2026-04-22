@@ -1,28 +1,48 @@
-## Struct di react
+## react
 src/
 ├── dashboard/
 │   └── src/
 │       ├── components/
 │       │   ├── common/
 │       │   ├── layout/
+│       │   │   ├── menuConfig.js
+│       │   │   ├── MonitorLayout.jsx
+│       │   │   ├── Navbar.jsx
+│       │   │   └── Sidebar.jsx
+│       │   ├── analytics/
+│       │   │   ├── Header.jsx
+│       │   │   ├── Labels.jsx
+│       │   │   ├── StatsOverview.jsx
+│       │   │   ├── SummaryCards.jsx
+│       │   │   └── WeeklyOverview.jsx
 │       │   ├── dashboard/
-│       │       ├── dashboard/
+│       │   │   ├── BatteryGrids.jsx
+│       │   │   ├── MLforecast.jsx
+│       │   │   ├── PowerChart.jsx
+│       │   │   └── StatCards.jsx
+│       │   ├── diagnostics/
+│       │   │   ├── Header.jsx
+│       │   │   ├── StatsOverview.jsx
+│       │   │   └── UnitStats.jsx
+│       │   ├── section/
+│       │   │   ├── AboutTeam.jsx
+│       │   │   ├── Footer.jsx
+│       │   │   ├── Hero.jsx
+│       │   │   ├── HyperLink.jsx
+│       │   │   ├── Schedule.jsx
+│       │   │   ├── ScheduleSummary.jsx
+│       │   │   ├── SystemFlow.jsx
+│       │   │   └── TechStack.jsx
 │       │   └── MainLayout.jsx
 │       ├── hooks/
 │       ├── pages/
-│       │   └── Dashboard.jsx
+│       │   ├── Analytics.jsx
+│       │   ├── Dashboard.jsx
+│       │   ├── Diagnostics.jsx
+│       │   └── Documentation.jsx
 │       └── store/
 ├── assets/
 ├── App.css
 ├── App.jsx
 ├── index.css
 └── main.jsx
-
-## Struct di root
-ews/
-├── backend/
-│   ├── main.py
-│   ├── db.py
-│   ├── models.py
-│   └── serial_bridge.py
-└── arduino/

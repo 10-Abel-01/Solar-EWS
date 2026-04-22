@@ -1,31 +1,55 @@
 import React from 'react';
-import { BrainCircuit, TrendingUp } from 'lucide-react';
+import { useTrafficAI } from '../../hooks/useTrafficAI';
+import { AlertCircle, CheckCircle2 } from 'lucide-react';
 
 const MLforecast = () => {
+  const { data, alerts, isHazard } = useTrafficAI();
+
   return (
-    <div className="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
-      <div className="flex justify-between items-center mb-8">
-        <h3 className="text-lg font-bold flex items-center gap-2">
-          <BrainCircuit size={20} className="text-indigo-600" /> AI Traffic Forecast
-        </h3>
-        <span className="text-[10px] bg-indigo-50 text-indigo-600 px-3 py-1 rounded-full font-black">LSTM MODEL ACTIVE</span>
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="space-y-4">
-          <p className="text-sm text-gray-500 leading-relaxed">
-            Berdasarkan data cuaca dan produksi 7 hari terakhir, sistem memprediksi lonjakan daya pada pukul 11:30 Besok.
-          </p>
-          <div className="p-4 bg-indigo-50 rounded-2xl border border-indigo-100">
-            <p className="text-[10px] font-black text-indigo-400 uppercase">Estimated Yield</p>
-            <p className="text-xl font-black text-indigo-900">14.2 KWh <span className="text-xs font-normal text-emerald-500">+5.2%</span></p>
+    <div className="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm transition-all duration-500">
+      <div className="flex justify-between items-center mb-6">
+        <h3 className="font-black text-gray-900 italic">AI LIVE MONITOR</h3>
+        {isHazard ? (
+          <div className="flex items-center gap-2 text-red-600 bg-red-50 px-4 py-1.5 rounded-full animate-pulse">
+            <AlertCircle size={16} />
+            <span className="text-[10px] font-black uppercase">System Danger</span>
           </div>
+        ) : (
+          <div className="flex items-center gap-2 text-emerald-600 bg-emerald-50 px-4 py-1.5 rounded-full">
+            <CheckCircle2 size={16} />
+            <span className="text-[10px] font-black uppercase">System Safe</span>
+          </div>
+        )}
+      </div>
+
+      <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="text-center">
+          <p className="text-[10px] font-bold text-gray-400 uppercase">Voltage</p>
+          <p className="text-lg font-black text-gray-900">{data.voltage}V</p>
         </div>
-        
-        {/* Placeholder untuk Mini Chart */}
-        <div className="h-32 bg-gray-50 rounded-2xl border-2 border-dashed border-gray-200 flex items-center justify-center">
-          <TrendingUp className="text-gray-300 animate-pulse" size={32} />
+        <div className="text-center border-x border-gray-50">
+          <p className="text-[10px] font-bold text-gray-400 uppercase">Temp</p>
+          <p className="text-lg font-black text-gray-900">{data.temp}°C</p>
         </div>
+        <div className="text-center">
+          <p className="text-[10px] font-bold text-gray-400 uppercase">Efficiency</p>
+          <p className="text-lg font-black text-gray-900">{data.efficiency}%</p>
+        </div>
+      </div>
+
+      <div className="space-y-3">
+        {alerts.length > 0 ? (
+          alerts.map((alert) => (
+            <div key={alert.id} className="bg-gray-50 p-4 rounded-2xl border-l-4 border-red-500 flex justify-between items-center">
+              <span className={`text-xs font-bold ${alert.color}`}>{alert.msg}</span>
+              <span className="text-[9px] text-gray-400">{data.timestamp}</span>
+            </div>
+          ))
+        ) : (
+          <div className="text-center py-4 border-2 border-dashed border-gray-50 rounded-2xl">
+            <p className="text-xs text-gray-400 font-medium italic">Scanning for anomalies...</p>
+          </div>
+        )}
       </div>
     </div>
   );
