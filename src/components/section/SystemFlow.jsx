@@ -51,7 +51,7 @@ const SystemFlow = () => {
               <div className={`${step.color} text-white p-4 rounded-2xl shadow-lg`}>
                 {step.icon}
               </div>
-              
+
               {index < steps.length - 1 && (
                 <div className="hidden md:block absolute -right-6 top-1/2 -translate-y-1/2 text-gray-300">
                   <ArrowRight size={20} />
@@ -75,14 +75,14 @@ const SystemFlow = () => {
           </p>
         </div>
         <div className="flex gap-4">
-           <div className="px-6 py-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
-              <span className="block text-2xl font-black text-orange-400">99%</span>
-              <span className="text-[10px] uppercase tracking-wider opacity-60">Uptime Data</span>
-           </div>
-           <div className="px-6 py-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
-              <span className="block text-2xl font-black text-orange-400">&lt; 1s</span>
-              <span className="text-[10px] uppercase tracking-wider opacity-60">Latency</span>
-           </div>
+          <div className="px-6 py-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
+            <span className="block text-2xl font-black text-orange-400">99%</span>
+            <span className="text-[10px] uppercase tracking-wider opacity-60">Uptime Data</span>
+          </div>
+          <div className="px-6 py-3 bg-white/10 rounded-2xl backdrop-blur-md border border-white/10">
+            <span className="block text-2xl font-black text-orange-400">&lt; 1s</span>
+            <span className="text-[10px] uppercase tracking-wider opacity-60">Latency</span>
+          </div>
         </div>
       </div>
     </section>

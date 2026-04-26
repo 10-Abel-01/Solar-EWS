@@ -72,13 +72,13 @@ const Summary = () => {
         <h2 className="text-2xl font-bold mb-5 relative z-10 flex items-center gap-3">
           <Zap size={20} className="text-orange-400" /> Core Functions
         </h2>
-        
+
         <div className="space-y-6 relative z-10">
           <div className="border-l-2 border-orange-500 pl-4">
             <h5 className="text-orange-400 font-bold text-sm uppercase tracking-widest">Smart Rotation</h5>
             <p className="text-gray-400 text-sm">Sistem membagi beban kerja baterai menjadi 3 fase (07:00, 10:00, 13:00) untuk meminimalisir overheat.</p>
           </div>
-          
+
           <div className="border-l-2 border-gray-700 pl-4">
             <h5 className="text-gray-300 font-bold text-sm uppercase tracking-widest">Auto Tracking</h5>
             <p className="text-gray-500 text-sm">Meningkatkan penyerapan foton hingga 30% dibandingkan panel statis.</p>

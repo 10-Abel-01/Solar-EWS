@@ -163,7 +163,7 @@ const AboutTeam = () => {
               Hamad Syaid
             </h3>
             <div className="flex flex-row md:flex-row mt-1 gap-1">
-              <FileText className="text-rose-500 mt-1" /> 
+              <FileText className="text-rose-500 mt-1" />
               <p className="row text-gray-500 text-lg font-medium mb-6 whitespace-nowrap">
                 Documenter
               </p>

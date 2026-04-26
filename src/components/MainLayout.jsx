@@ -28,7 +28,7 @@ const MainLayout = () => {
         {/* sesi */}
         <Navbar />
         <Hero />
-        <HyperLink  />
+        <HyperLink />
 
         <AboutTeam />
         <SystemFlow />
