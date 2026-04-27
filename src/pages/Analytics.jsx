@@ -19,7 +19,6 @@ const Analytics = () => {
         <div className="flex flex-col gap-y-4 space-y-8 pb-10">
           {/* sesi analytics */}
           <Header />
-          <Labels />
           <SummaryCards />  
           <StatsOverview />
           <WeeklyOverview />
