@@ -49,7 +49,7 @@ const Documentation = () => {
                                     </div>
                                     <span className="text-xs font-black uppercase tracking-widest text-gray-400">Knowledge Base</span>
                                 </div>
-                                <h1 className="text-3xl md:text-4xl font-black italic">Documentation & Guide</h1>
+                                <h1 className="text-3xl md:text-4xl font-black">Documentation & Guide</h1>
                                 <p className="text-gray-400 mt-2 max-w-xl font-medium">
                                     Panduan teknis pengoperasian dan pemahaman algoritma Solar-EWS.
                                 </p>
@@ -77,7 +77,6 @@ const Documentation = () => {
                         <div className="bg-white rounded-[3rem] border border-gray-100 shadow-sm overflow-hidden">
                             <div className="p-8 md:p-12">
                                 <h3 className="text-2xl font-black text-gray-950 mb-8 flex items-center gap-3">
-                                    <Zap size={28} className="text-orange-500" />
                                     Technical Architecture
                                 </h3>
 
@@ -85,7 +84,7 @@ const Documentation = () => {
                                     <div className="flex gap-6 items-start">
                                         <div className="h-8 w-8 rounded-full bg-orange-50 flex items-center justify-center shrink-0 text-orange-600 font-black text-sm">1</div>
                                         <div>
-                                            <h4 className="font-bold text-gray-900 italic">Frontend Layer</h4>
+                                            <h4 className="font-bold text-gray-900">Frontend Layer</h4>
                                             <p className="text-sm text-gray-500 mt-1">Dibangun dengan React + Vite untuk performa tinggi. Tailwind CSS v4 digunakan untuk manajemen styling berbasis @theme.</p>
                                         </div>
                                     </div>
@@ -93,7 +92,7 @@ const Documentation = () => {
                                     <div className="flex gap-6 items-start">
                                         <div className="h-8 w-8 rounded-full bg-blue-50 flex items-center justify-center shrink-0 text-blue-600 font-black text-sm">2</div>
                                         <div>
-                                            <h4 className="font-bold text-gray-900 italic">Logic & Hooks</h4>
+                                            <h4 className="font-bold text-gray-900">Logic & Hooks</h4>
                                             <p className="text-sm text-gray-500 mt-1">Algoritma AI diletakkan di dalam Custom Hooks untuk memisahkan antara pengambilan data dan tampilan UI.</p>
                                         </div>
                                     </div>
@@ -101,7 +100,7 @@ const Documentation = () => {
                                     <div className="flex gap-6 items-start">
                                         <div className="h-8 w-8 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 text-emerald-600 font-black text-sm">3</div>
                                         <div>
-                                            <h4 className="font-bold text-gray-900 italic">Security & Safety</h4>
+                                            <h4 className="font-bold text-gray-900">Security & Safety</h4>
                                             <p className="text-sm text-gray-500 mt-1">Setiap anomali akan terekam dalam log sistem di halaman Diagnostics untuk audit performa.</p>
                                         </div>
                                     </div>
