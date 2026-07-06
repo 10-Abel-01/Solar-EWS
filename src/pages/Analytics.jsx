@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/analytics/Header";
 import StatsOverview from "../components/analytics/StatsOverview";
 import WeeklyOverview from "../components/analytics/WeeklyOverview";
@@ -7,9 +7,11 @@ import TelemetryTable from "../components/analytics/TelemetryTable";
 import { supabase } from "../lib/supabaseClient";
 
 const Analytics = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const [telemetry, setTelemetry] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [desktopCharts, setDesktopCharts] = useState(
+    typeof window !== "undefined" ? window.innerWidth >= 1280 : false
+  );
 
   useEffect(() => {
     const fetchTelemetry = async () => {
@@ -34,12 +36,13 @@ const Analytics = () => {
       setLoading(false);
     };
     fetchTelemetry();
+
+    const handleResize = () => setDesktopCharts(window.innerWidth >= 1280);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const latest = telemetry[0] || {};
-  const averagePower = telemetry.length
-    ? (telemetry.reduce((sum, row) => sum + (row.power || 0), 0) / telemetry.length).toFixed(2)
-    : "0.00";
   const averageVoltage = telemetry.length
     ? (telemetry.reduce((sum, row) => sum + (row.voltage || 0), 0) / telemetry.length).toFixed(2)
     : "0.00";
@@ -75,22 +78,28 @@ const Analytics = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <main
-        className={`flex-1 transition-all duration-300 ${
-          isCollapsed ? "lg:ml-20" : "lg:ml-64"
-        } lg:mt-0`}
-      >
+      <main className="flex-1 transition-all duration-300 lg:ml-64 lg:mt-0">
         <div className="flex flex-col gap-y-4 space-y-8 pb-10">
           <Header />
           <SummaryCards stats={summaryCards} loading={loading} />
-          <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-            <div className="xl:col-span-2">
-              <StatsOverview />
+          {desktopCharts ? (
+            <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
+              <div className="xl:col-span-2">
+                <StatsOverview />
+              </div>
+              <div className="xl:col-span-1">
+                <WeeklyOverview />
+              </div>
             </div>
-            <div className="xl:col-span-1">
-              <WeeklyOverview />
+          ) : (
+            <div className="bg-white p-6 rounded-[2.5rem] border border-gray-100 shadow-sm">
+              <h3 className="text-lg font-black text-gray-950 mb-3">Analytics Mobile View</h3>
+              <p className="text-sm text-gray-500">
+                Grafik analitik lengkap tersedia pada layar desktop. Untuk tampilan mobile,
+                data ringkas ditampilkan pada kartu di atas dan tabel telemetry.
+              </p>
             </div>
-          </div>
+          )}
           <TelemetryTable rows={telemetry} loading={loading} />
         </div>
       </main>

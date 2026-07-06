@@ -34,8 +34,8 @@ const WeeklyOverview = () => {
         </div>
       </div>
 
-      <div className="h-[300px] w-full">
-        <ResponsiveContainer width="99%" height="100%">
+      <div className="relative h-[300px] min-h-[300px] min-w-0 w-full">
+        <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={300}>
           <LineChart
             data={weeklyTrend}
             margin={{ top: 5, right: 10, left: -20, bottom: 0 }}

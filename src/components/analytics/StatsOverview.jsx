@@ -1,7 +1,7 @@
 import React from "react";
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip,
-  ResponsiveContainer, ComposedChart, Line, Bar, Scatter
+  ResponsiveContainer, ComposedChart, Line, Bar
 } from 'recharts';
 import {
   TrendingUp, Activity, Thermometer,
@@ -34,8 +34,8 @@ const StatsOverview = () => {
           </div>
         </div>
 
-        <div className="h-[350px] w-full">
-          <ResponsiveContainer width="99%" height="100%">
+        <div className="relative h-[350px] min-h-[350px] min-w-0 w-full">
+          <ResponsiveContainer width="100%" height="100%" minWidth={0} minHeight={350}>
             <ComposedChart data={correlationData}>
               <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f3f4f6" />
               <XAxis dataKey="temp" unit="°C" axisLine={false} tickLine={false} tick={{ fill: '#9ca3af', fontSize: 12 }} />

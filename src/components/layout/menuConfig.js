@@ -21,10 +21,4 @@ export const MENU_ITEMS = [
       { name: "Documentation", path: "/documentation", icon: FaBook },
     ]
   },
-  {
-    group: "MAIN MENU",
-    items: [
-      { name: "Landing Page", path: "/", icon: MdArrowBack },
-    ]
-  },
 ];

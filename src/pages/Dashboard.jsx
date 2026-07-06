@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { createClient } from "@supabase/supabase-js";
 import StatCards from "../components/dashboard/StatCards";
 import SystemDiagnostic from "../components/dashboard/SystemDiagnostic";
 import PowerChart from "../components/dashboard/PowerChart";
-
-const SUPABASE_URL = 'https://oxnqajdkpqrdizgywkjv.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im94bnFhamRrcHFyZGl6Z3l3a2p2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODMyNjcxOTIsImV4cCI6MjA5ODg0MzE5Mn0.MD5zBeYLlWpcdHMC5hi1QWok7if9K-vSqP5pygK8OAE';
-const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+import { supabase } from "../lib/supabaseClient";
 
 const Dashboard = () => {
   const [isCollapsed] = useState(false);
@@ -41,7 +37,14 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    fetchInitialData();
+    let isMounted = true;
+
+    const loadData = async () => {
+      await fetchInitialData();
+      if (!isMounted) return;
+    };
+
+    void loadData();
 
     const telemetrySubscription = supabase
       .channel("any")
@@ -69,6 +72,7 @@ const Dashboard = () => {
       .subscribe();
 
     return () => {
+      isMounted = false;
       supabase.removeChannel(telemetrySubscription);
       supabase.removeChannel(diagnosticsSubscription);
     };
@@ -76,7 +80,7 @@ const Dashboard = () => {
 
   return (
     <div className="flex min-h-screen bg-gray-100">
-      <main className={`flex-1 transition-all duration-300 p-6 ${isCollapsed ? "lg:ml-20" : "lg:ml-64"}`}>
+      <main className={`flex-1 transition-all duration-300 p-2 ${isCollapsed ? "lg:ml-20" : "lg:ml-64"}`}>
         <div className="flex flex-col gap-y-6">
           <StatCards telemetry={latestData} />
           

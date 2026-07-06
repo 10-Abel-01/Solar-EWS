@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import {
   AreaChart,
   Area,
@@ -13,7 +13,28 @@ import { Activity, Zap } from "lucide-react";
 
 
 const PowerChart = ({ chartData }) => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(() => (typeof window !== "undefined" ? window.innerWidth < 768 : false));
+  const chartRef = useRef(null);
+  const [chartSize, setChartSize] = useState({ width: 0, height: 0 });
+
+  useLayoutEffect(() => {
+    const node = chartRef.current;
+    if (!node) return;
+
+    const updateSize = () => {
+      setChartSize({ width: node.offsetWidth, height: node.offsetHeight });
+    };
+
+    updateSize();
+    if (typeof ResizeObserver !== "undefined") {
+      const observer = new ResizeObserver((entries) => {
+        const { width, height } = entries[0].contentRect;
+        setChartSize({ width, height });
+      });
+      observer.observe(node);
+      return () => observer.disconnect();
+    }
+  }, []);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -47,14 +68,19 @@ const PowerChart = ({ chartData }) => {
       </div>
 
       <div
-        className="w-full mt-2"
-        style={{ height: isMobile ? "280px" : "380px", minWidth: "0" }}
+        ref={chartRef}
+        className="w-full mt-2 min-w-0"
+        style={{ height: isMobile ? "280px" : "380px", minWidth: 0 }}
       >
-        <ResponsiveContainer
-          width="99%"
-          height="100%"
-          key={isMobile ? "mobile-chart" : "desktop-chart"}
-        >
+        {chartSize.width > 0 && chartSize.height > 0 ? (
+          <ResponsiveContainer
+            width={chartSize.width}
+            height={chartSize.height}
+            minWidth={0}
+            minHeight={280}
+            aspect={undefined}
+            key={isMobile ? "mobile-chart" : "desktop-chart"}
+          >
           <AreaChart
             data={chartData}
             margin={{ top: 10, right: 10, left: -25, bottom: 0 }}
@@ -129,6 +155,7 @@ const PowerChart = ({ chartData }) => {
             />
           </AreaChart>
         </ResponsiveContainer>
+        ) : null}
       </div>
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-4 border-t border-gray-50 pt-6">

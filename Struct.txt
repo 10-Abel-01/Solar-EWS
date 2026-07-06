@@ -1,4 +1,7 @@
 ## react
+solar-bridge/
+└── index.cjs
+
 src/
 ├── dashboard/
 │   └── src/
@@ -17,7 +20,7 @@ src/
 │       │   │   └── WeeklyOverview.jsx
 │       │   ├── dashboard/
 │       │   │   ├── BatteryGrids.jsx
-│       │   │   ├── MLforecast.jsx
+│       │   │   ├── SystemDiagnostic.jsx
 │       │   │   ├── PowerChart.jsx
 │       │   │   └── StatCards.jsx
 │       │   ├── diagnostics/
