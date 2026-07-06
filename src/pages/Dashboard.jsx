@@ -45,7 +45,7 @@ const Dashboard = () => {
 
     const telemetrySubscription = supabase
       .channel("any")
-      .on("postgres_changes", { event: "INSERT", scheme: "public", table: "solar_telemetry" }, (payload) => {
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "solar_telemetry" }, (payload) => {
         const newLog = payload.new;
         setLatestData(newLog);
 
@@ -63,7 +63,7 @@ const Dashboard = () => {
 
     const diagnosticsSubscription = supabase
       .channel("diagnostics-logs")
-      .on("postgres_changes", { event: "INSERT", scheme: "public", table: "system_diagnostics" }, (payload) => {
+      .on("postgres_changes", { event: "INSERT", schema: "public", table: "system_diagnostics" }, (payload) => {
         setDiagnosticLogs((prev) => [payload.new, ...prev.slice(0, 2)]);
       })
       .subscribe();
