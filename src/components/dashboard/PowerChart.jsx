@@ -11,21 +11,8 @@ import {
 } from "recharts";
 import { Activity, Zap } from "lucide-react";
 
-// dummy data untuk chart
-const data = [
-  { time: "08:00", actual: 40, forecast: 42 },
-  { time: "09:00", actual: 55, forecast: 58 },
-  { time: "10:00", actual: 85, forecast: 80 },
-  { time: "11:00", actual: 95, forecast: 92 },
-  { time: "12:00", actual: 80, forecast: 85 },
-  { time: "13:00", actual: 90, forecast: 70 },
-  { time: "14:00", actual: 70, forecast: 69 },
-  { time: "15:00", actual: 54, forecast: 51 },
-  { time: "16:00", actual: 41, forecast: 45 },
-  { time: "17:00", actual: 39, forecast: 33 },
-];
 
-const PowerChart = () => {
+const PowerChart = ({ chartData }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
@@ -34,6 +21,9 @@ const PowerChart = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Ambil nilai tertinggi dan rata-rata dari data yang aktif di grafik
+  const peakToday = chartData.length > 0 ? Math.max(...chartData.map(d => d.actual)) : 0;
+  const averagePower = chartData.length > 0 ? parseFloat((chartData.reduce((acc, d) => acc + d.actual, 0) / chartData.length).toFixed(1)) : 0;
   return (
     <div className="bg-white p-5 md:p-8 rounded-[2rem] md:rounded-[2.5rem] shadow-sm border border-gray-100 flex flex-col w-full overflow-hidden">
       <div className="flex justify-between items-start md:items-center mb-6">
@@ -66,7 +56,7 @@ const PowerChart = () => {
           key={isMobile ? "mobile-chart" : "desktop-chart"}
         >
           <AreaChart
-            data={data}
+            data={chartData}
             margin={{ top: 10, right: 10, left: -25, bottom: 0 }}
           >
             <defs>
@@ -148,7 +138,7 @@ const PowerChart = () => {
               Peak Today
             </p>
             <p className="text-md md:text-lg font-black text-gray-950">
-              95.4 W
+              {peakToday.toFixed(1)} W
             </p>
           </div>
           <div>
@@ -156,7 +146,7 @@ const PowerChart = () => {
               Average
             </p>
             <p className="text-md md:text-lg font-black text-gray-950">
-              62.1 W
+              {averagePower} W
             </p>
           </div>
         </div>

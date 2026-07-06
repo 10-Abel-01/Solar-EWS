@@ -2,7 +2,7 @@
 import { useTrafficAI } from '../../hooks/useTrafficAI';
 import { AlertCircle, CheckCircle2 } from 'lucide-react';
 
-const MLforecast = () => {
+const SystemDiagnostic = () => {
   const { data, alerts, isHazard } = useTrafficAI();
 
   return (
@@ -53,4 +53,4 @@ const MLforecast = () => {
   );
 };
 
-export default MLforecast;
+export default SystemDiagnostic;

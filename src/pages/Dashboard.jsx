@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import StatCards from "../components/dashboard/StatCards";
-import MLforecast from "../components/dashboard/SystemDiagnostic";
+import SystemDiagnostic from "../components/dashboard/SystemDiagnostic";
 import PowerChart from "../components/dashboard/PowerChart";
 
 const SUPABASE_URL = 'https://oxnqajdkpqrdizgywkjv.supabase.co';
@@ -82,7 +82,7 @@ const Dashboard = () => {
           
           <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
             <div className="xl:col-span-1">
-              <SystemDiagnostics logs={diagnosticLogs} />
+              <SystemDiagnostic logs={diagnosticLogs} />
             </div>
             <div className="xl:col-span-2">
               <PowerChart chartData={chartData} />
