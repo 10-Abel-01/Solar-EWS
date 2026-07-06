@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 import StatCards from "../components/dashboard/StatCards";
-import MLforecast from "../components/dashboard/SystemDiagnostics";
+import MLforecast from "../components/dashboard/SystemDiagnostic";
 import PowerChart from "../components/dashboard/PowerChart";
 
 const SUPABASE_URL = 'https://oxnqajdkpqrdizgywkjv.supabase.co';
