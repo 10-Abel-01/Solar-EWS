@@ -1,14 +1,25 @@
-import react from "react";
+import React from "react";
 
-const SummaryCards = () => {
+const SummaryCards = ({ stats = [], loading }) => {
+  if (loading) {
+    return (
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 4 }).map((_, idx) => (
+          <div
+            key={idx}
+            className="bg-white p-5 rounded-[2rem] border border-gray-100 shadow-sm animate-pulse"
+          >
+            <div className="h-4 w-28 bg-gray-200 rounded mb-3" />
+            <div className="h-7 w-20 bg-gray-200 rounded" />
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-      {[
-        { label: "Avg Efficiency", value: "88.5%", color: "text-emerald-600" },
-        { label: "Total Savings", value: "$124.2", color: "text-blue-600" },
-        { label: "Peak Hour", value: "13:00", color: "text-orange-600" },
-        { label: "CO2 Avoided", value: "12.4kg", color: "text-purple-600" },
-      ].map((stat, i) => (
+      {stats.map((stat, i) => (
         <div
           key={i}
           className="bg-white p-5 rounded-[2rem] border border-gray-100 shadow-sm"
